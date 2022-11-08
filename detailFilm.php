@@ -12,18 +12,18 @@ $pdo = new PDO(
     $dbuser,
     $dbpass,
     array(
-        \PDO::MYSQL_ATTR_INIT_COMMAND -> "SET NAMES 'utf8'",
-        \PDO::ATTR_ERRMODE -> \PDO::ERRMODE_EXCEPTION,
-        \PDO::ATTR_DEFAULT_FETCH_MODE -> \PDO::FETCH_ASSOC
+        \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
     )
 );
 
-$sql = "SELECT titre, annee_sortie_france FROM film where id_film = :id";
+$sql = "SELECT id_film, titre, annee_sortie_france FROM film where id_film = :id";
 //:id  - on ne passe pas par query mais par prepare/execute
-$statement = $pdo->prepare($sql);
+$cinemaStatement = $pdo->prepare($sql);
 //execute associe le nom du champ param avec l'id de l'URL (ligne 3)
-$statement->execute(["id"->$id]);
-$cinema = $statement->fetchAll();
+$cinemaStatement->execute(["id"->$id]);
+$cinema = $cinemaStatement->fetchAll();
 ?>
 
 <h1><?= $cinema["titre"]; ?></h1>

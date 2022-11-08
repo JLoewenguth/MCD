@@ -20,15 +20,7 @@ INNER JOIN personne p ON p.id_personne=r.id_personne');
 
 $cinemaStatement->execute();
 $cinema = $cinemaStatement->fetchAll();
-/*
-foreach($cinema as $cinema){
-?>
 
-    <p><?php echo $cinema['titre']; ?></p>
-    <p><?php echo $cinema['annee_sortie_france']; ?></p>
-
-
-    <?php } ?>*/
 ?>
 <table>
     <thread>
