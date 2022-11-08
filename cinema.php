@@ -13,7 +13,7 @@ INNER JOIN realisateur r ON r.id_realisateur=f.id_realisateur
 INNER JOIN personne p ON p.id_personne=r.id_personne";*/
 
 
-$cinemaStatement = $mySqlClient->prepare('SELECT titre, annee_sortie_france AS annee, nom, prenom, duree_minutes
+$cinemaStatement = $mySqlClient->prepare('SELECT id_film, titre, annee_sortie_france AS annee, nom, prenom, duree_minutes
 FROM film f
 INNER JOIN realisateur r ON r.id_realisateur=f.id_realisateur
 INNER JOIN personne p ON p.id_personne=r.id_personne');
@@ -43,7 +43,7 @@ foreach($cinema as $cinema){
         <?php
         foreach($cinema as $cinema) { ?>
             <tr>
-                <td><?= $cinema["titre"] ?></td>
+                <td><a href="detailFilm.php?id=<?= $cinema["id_film"] ?>"><?= $cinema["titre"] ?></a></td>
                 <td><?= $cinema["annee"] ?></td>
                 <td><?= $cinema["duree_minutes"] ?></td>
                 <td><?= $cinema["nom"]." ".$cinema["prenom"] ?></td>
