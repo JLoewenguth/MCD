@@ -17,7 +17,17 @@ INNER JOIN personne p ON p.id_personne=r.id_personne');
 $cinemaStatement->execute();
 $cinema = $cinemaStatement->fetchAll();
 
+$realStatement = $mySqlClient->prepare('SELECT distinct nom, prenom, sexe, date_naissance
+    FROM realisateur r
+    INNER JOIN personne p ON p.id_personne=r.id_personne
+    INNER JOIN film f ON f.id_realisateur=r.id_realisateur');
+
+$realStatement->execute();
+$realisateur = $realStatement->fetchAll();
+
 ?>
+<link rel="stylesheet" href="style.css">
+<h1> liste des films</h1>
 <table>
     <thread>
         <tr>
@@ -35,6 +45,29 @@ $cinema = $cinemaStatement->fetchAll();
                 <td><?= $cinema["annee"] ?></td>
                 <td><?= $cinema["duree_heures"] ?></td>
                 <td><?= $cinema["nom"]." ".$cinema["prenom"] ?></td>
+            </tr>
+    <?php    } ?>
+    </tbody>
+</table>
+        </br>
+<h1> liste des réalisateurs </h1>
+<table>
+    <thread>
+        <tr>
+            <th>NOM</th>
+            <th>SEXE</th>
+            <th>NAISSANCE</th>
+            <th>FILMOGRAPHIE</th>
+        </tr>
+    </thread>
+    <tbody>
+        <?php
+        foreach($realisateur as $realisateur) { ?>
+            <tr>
+                <td><?= $realisateur["prenom"]." ".$realisateur["nom"] ?></td>
+                <td><?= $realisateur["sexe"] ?></td>
+                <td><?= $realisateur["date_naissance"] ?></td>
+                <td><a href="realisateur.php?id=<?= $realisateur["0"] ?>"><?= "liste" ?></td>
             </tr>
     <?php    } ?>
     </tbody>

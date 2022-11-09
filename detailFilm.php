@@ -36,7 +36,7 @@ $sqlCasting = "SELECT concat(prenom,' ',nom) as acteur, nom_role
 
 $castingStatement = $pdo->prepare($sqlCasting);
 $castingStatement->execute(["id"=>$id]);
-$casting = $castingStatement->fetch();
+$casting = $castingStatement->fetchAll();
 ?>
 
 <!--affichage-->
@@ -46,7 +46,7 @@ $casting = $castingStatement->fetch();
 <h3>Casting</h3>
 <ul>
 <?php
-    foreach($castingStatement as $c){ ?>
+    foreach($casting as $c){ ?>
         <li><?= $c["acteur"] ?> (<?= $c["nom_role"] ?>)</li>
 <?php } ?>
 </ul>
