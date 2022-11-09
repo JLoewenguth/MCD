@@ -33,6 +33,6 @@ $realisateur = $realStatement->fetchAll();
 <ul>
 <?php
     foreach($realisateur as $r){ ?>
-        <li><?= $r["titre"] ?> (<?= $c["nom_role"] ?>)</li>
+        <li><?= $r["titre"] ?> (<?= $r["annee_sortie_france"] ?>)</li>
 <?php } ?>
 </ul>

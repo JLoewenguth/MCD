@@ -7,17 +7,19 @@ catch (Exception $e)
     die('Erreur : ' . $e->getMessage());
 }
 
+// recherche des films
 $cinemaStatement = $mySqlClient->prepare('SELECT id_film, titre,
-annee_sortie_france AS annee, nom, prenom,
-TIME_FORMAT(SEC_TO_TIME(duree_minutes*60), "%H:%i") as duree_heures
-FROM film f
-INNER JOIN realisateur r ON r.id_realisateur=f.id_realisateur
-INNER JOIN personne p ON p.id_personne=r.id_personne');
+    annee_sortie_france AS annee, nom, prenom,
+    TIME_FORMAT(SEC_TO_TIME(duree_minutes*60), "%H:%i") as duree_heures
+    FROM film f
+    INNER JOIN realisateur r ON r.id_realisateur=f.id_realisateur
+    INNER JOIN personne p ON p.id_personne=r.id_personne');
 
 $cinemaStatement->execute();
 $cinema = $cinemaStatement->fetchAll();
 
-$realStatement = $mySqlClient->prepare('SELECT distinct nom, prenom, sexe, date_naissance
+//recherche des réalisateurs
+$realStatement = $mySqlClient->prepare('SELECT distinct r.id_realisateur, nom, prenom, sexe, date_naissance
     FROM realisateur r
     INNER JOIN personne p ON p.id_personne=r.id_personne
     INNER JOIN film f ON f.id_realisateur=r.id_realisateur');
@@ -27,6 +29,7 @@ $realisateur = $realStatement->fetchAll();
 
 ?>
 <link rel="stylesheet" href="style.css">
+<!-- tableau des films -->
 <h1> liste des films</h1>
 <table>
     <thread>
@@ -50,6 +53,7 @@ $realisateur = $realStatement->fetchAll();
     </tbody>
 </table>
         </br>
+<!-- tableau des réalisateurs -->
 <h1> liste des réalisateurs </h1>
 <table>
     <thread>
@@ -67,7 +71,7 @@ $realisateur = $realStatement->fetchAll();
                 <td><?= $realisateur["prenom"]." ".$realisateur["nom"] ?></td>
                 <td><?= $realisateur["sexe"] ?></td>
                 <td><?= $realisateur["date_naissance"] ?></td>
-                <td><a href="realisateur.php?id=<?= $realisateur["0"] ?>"><?= "liste" ?></td>
+                <td><a href="realisateur.php?id=<?= $realisateur["id_realisateur"] ?>"><?= "liste" ?></td>
             </tr>
     <?php    } ?>
     </tbody>

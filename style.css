@@ -2,6 +2,45 @@ table, th, td {
     border: 1px solid;
     border-collapse: collapse;
     table-layout: fixed;
-    width: 250px;
+    width: 270px;
     height: 34px;
   }
+
+h1 {
+    color: rgb(66, 0, 0);
+    font-size: 2em;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+  }
+
+
+h3 {
+    color: rgb(119, 0, 0);
+    font-size: 1em;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+  }
+
+  
+/*#textPrincipal {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    }
+*/
+
+a {
+    font-size: 16px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
