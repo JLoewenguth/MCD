@@ -18,6 +18,7 @@ $pdo = new PDO(
     )
 );
 
+//recherche du titre et de l'annee de sortie
 $sql = "SELECT id_film, titre, annee_sortie_france FROM film WHERE id_film = :id";
 //:id  - on ne passe pas par query mais par prepare/execute
 $cinemaStatement = $pdo->prepare($sql);
@@ -25,6 +26,7 @@ $cinemaStatement = $pdo->prepare($sql);
 $cinemaStatement->execute(["id"=>$id]);
 $cinema = $cinemaStatement->fetch();
 
+//recherche du casting
 $sqlCasting = "SELECT concat(prenom,' ',nom) as acteur, nom_role
                 FROM personne p
                 inner join acteur a on p.id_personne = a.id_personne
@@ -34,16 +36,17 @@ $sqlCasting = "SELECT concat(prenom,' ',nom) as acteur, nom_role
 
 $castingStatement = $pdo->prepare($sqlCasting);
 $castingStatement->execute(["id"=>$id]);
-$casting = $castingStatement->fetch();
+$casting = $castingStatement->fetchAll();
 ?>
 
+<!--affichage-->
 <h1><?= $cinema["titre"]; ?></h1>
 <p>Année de sortie : <?= $cinema["annee_sortie_france"] ?></p>
 
 <h3>Casting</h3>
 <ul>
 <?php
-    foreach($castingStatement as $casting){ ?>
-        <li><?= $casting["acteur"] ?> (<?= $casting["nom_role"] ?>)</li>
+    foreach($castingStatement as $c){ ?>
+        <li><?= $c["acteur"] ?> (<?= $c["nom_role"] ?>)</li>
 <?php } ?>
 </ul>
