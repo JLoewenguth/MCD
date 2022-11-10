@@ -32,6 +32,7 @@ $acteur = $acteurStatement->fetchAll();
 
 
 <!-- tableau des films d'un acteur -->
+<link rel="stylesheet" href="style.css">
 <h3>Films et rôles</h3>
 <ul>
 <?php

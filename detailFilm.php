@@ -40,6 +40,7 @@ $casting = $castingStatement->fetchAll();
 ?>
 
 <!--affichage-->
+<link rel="stylesheet" href="style.css">
 <h1><?= $cinema["titre"]; ?></h1>
 <p>Année de sortie : <?= $cinema["annee_sortie_france"] ?></p>
 

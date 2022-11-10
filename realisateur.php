@@ -31,6 +31,7 @@ $realisateur = $realStatement->fetchAll();
 ?>
 
 <!-- tableau des films du realisateur -->
+<link rel="stylesheet" href="style.css">
 <h3>Filmographie</h3>
 <ul>
 <?php
