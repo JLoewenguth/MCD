@@ -2,12 +2,24 @@ table, th, td {
     border: 1px solid;
     border-collapse: collapse;
     table-layout: fixed;
-    width: 270px;
+    
     height: 34px;
     border-spacing: 1cm 2em;
-
   }
 
+#tableFilms tr td:first-child {
+    width: 350px;
+  }
+#tableFilms tr td:nth-child(2) {
+    width: 150px;
+  }
+#tableFilms tr td:nth-child(3) {
+    width: 150px;
+  }
+#tableFilms tr td:last-child {
+    width: 220px;
+  }
+  
 h1 {
     color: rgb(66, 0, 0);
     font-size: 2em;

@@ -27,11 +27,20 @@ $realStatement = $mySqlClient->prepare('SELECT distinct r.id_realisateur, nom, p
 $realStatement->execute();
 $realisateur = $realStatement->fetchAll();
 
+//recherche des acteurs
+$acteurStatement = $mySqlClient->prepare('SELECT distinct a.id_acteur, nom, prenom, sexe, date_naissance
+    FROM acteur a
+    inner join personne p ON p.id_personne=a.id_personne
+    inner join jouer j ON j.id_acteur=a.id_acteur');
+
+$acteurStatement->execute();
+$acteur = $acteurStatement->fetchAll();
+
 ?>
 <link rel="stylesheet" href="style.css">
 <!-- tableau des films -->
 <h1> liste des films</h1>
-<table>
+<table id="tableFilms">
     <thread>
         <tr>
             <th>TITRE</th>
@@ -52,6 +61,7 @@ $realisateur = $realStatement->fetchAll();
     <?php    } ?>
     </tbody>
 </table>
+
         </br>
 <!-- tableau des réalisateurs -->
 <h1> liste des réalisateurs </h1>
@@ -76,3 +86,28 @@ $realisateur = $realStatement->fetchAll();
     <?php    } ?>
     </tbody>
 </table>
+
+    </br>
+<!-- tableau des acteurs -->
+<h1> liste des acteurs </h1>
+<table>
+    <thread>
+        <tr>
+            <th>NOM</th>
+            <th>SEXE</th>
+            <th>NAISSANCE</th>
+            <th>FILMOGRAPHIE</th>
+        </tr>
+    </thread>
+    <tbody>
+        <?php
+        foreach($acteur as $acteur) { ?>
+            <tr>
+                <td><?= $acteur["prenom"]." ".$acteur["nom"] ?></td>
+                <td><?= $acteur["sexe"] ?></td>
+                <td><?= $acteur["date_naissance"] ?></td>
+                <td><a href="acteur.php?id=<?= $acteur["id_acteur"] ?>"><?= "liste" ?></td>
+            </tr>
+    <?php    } ?>
+    </tbody>
+</table>    

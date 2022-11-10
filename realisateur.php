@@ -23,7 +23,7 @@ $sqlRealisateur = "SELECT titre, annee_sortie_france
                 FROM film f
                 inner join realisateur r on r.id_realisateur=f.id_realisateur
                 inner join personne p on p.id_personne=r.id_personne
-                WHERE r.id_personne = :id";
+                WHERE f.id_realisateur = :id";
 
 $realStatement = $pdo->prepare($sqlRealisateur);
 $realStatement->execute(["id"=>$id]);
@@ -38,3 +38,5 @@ $realisateur = $realStatement->fetchAll();
         <li><?= $r["titre"] ?> (<?= $r["annee_sortie_france"] ?>)</li>
 <?php } ?>
 </ul>
+
+<a href="cinema.php"?><?= "retour" ?>
