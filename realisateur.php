@@ -18,6 +18,7 @@ $pdo = new PDO(
     )
 );
 
+//recherche de la filmographie
 $sqlRealisateur = "SELECT titre, annee_sortie_france
                 FROM film f
                 inner join realisateur r on r.id_realisateur=f.id_realisateur
@@ -29,6 +30,7 @@ $realStatement->execute(["id"=>$id]);
 $realisateur = $realStatement->fetchAll();
 ?>
 
+<!-- tableau des films du realisateur -->
 <h3>Filmographie</h3>
 <ul>
 <?php

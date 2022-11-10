@@ -4,6 +4,8 @@ table, th, td {
     table-layout: fixed;
     width: 270px;
     height: 34px;
+    border-spacing: 1cm 2em;
+
   }
 
 h1 {

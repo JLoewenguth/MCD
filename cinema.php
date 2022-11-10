@@ -37,7 +37,7 @@ $realisateur = $realStatement->fetchAll();
             <th>TITRE</th>
             <th>ANNEE SORTIE</th>
             <th>DUREE</th>
-            <th>REAL</th>
+            <th>REALISATEUR</th>
         </tr>
     </thread>
     <tbody>
