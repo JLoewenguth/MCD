@@ -2,23 +2,42 @@ table, th, td {
     border: 1px solid;
     border-collapse: collapse;
     table-layout: fixed;
-    
     height: 34px;
     border-spacing: 1cm 2em;
   }
 
+/*tableau principal*/
 #tableFilms tr td:first-child {
     width: 350px;
   }
 #tableFilms tr td:nth-child(2) {
     width: 150px;
+    text-align: center
   }
 #tableFilms tr td:nth-child(3) {
     width: 150px;
+    text-align: center
   }
 #tableFilms tr td:last-child {
     width: 220px;
   }
+
+/*tableaux personnes*/
+#tablePersonne tr td:first-child {
+    width: 250px;
+  }
+#tablePersonne tr td:nth-child(2) {
+    width: 150px;
+    text-align: center
+  }
+#tablePersonne tr td:nth-child(3) {
+    width: 150px;
+    text-align: center
+  }
+#tablePersonne tr td:last-child {
+    width: 220px;
+  }
+
   
 h1 {
     color: rgb(66, 0, 0);

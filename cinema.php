@@ -65,7 +65,7 @@ $acteur = $acteurStatement->fetchAll();
         </br>
 <!-- tableau des réalisateurs -->
 <h1> liste des réalisateurs </h1>
-<table>
+<table id="tablePersonne">
     <thread>
         <tr>
             <th>NOM</th>
@@ -90,7 +90,7 @@ $acteur = $acteurStatement->fetchAll();
     </br>
 <!-- tableau des acteurs -->
 <h1> liste des acteurs </h1>
-<table>
+<table id="tablePersonne">
     <thread>
         <tr>
             <th>NOM</th>

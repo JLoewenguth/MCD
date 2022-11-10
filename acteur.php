@@ -19,9 +19,10 @@ $pdo = new PDO(
 );
 
 //recherche de la filmographie
-$sqlActeur = "SELECT titre, annee_sortie_france
+$sqlActeur = "SELECT titre, annee_sortie_france, nom_role
             FROM film f
             INNER JOIN jouer j ON j.id_film=f.id_film
+            INNER JOIN role r ON r.id_role = j.id_role
             WHERE j.id_acteur = :id";
 
 $acteurStatement = $pdo->prepare($sqlActeur);
@@ -35,7 +36,7 @@ $acteur = $acteurStatement->fetchAll();
 <ul>
 <?php
     foreach($acteur as $a){ ?>
-        <li><?= $a["titre"] ?> (<?= $a["annee_sortie_france"] ?>) : role</li>
+        <li><?= $a["titre"] ?> (<?= $a["annee_sortie_france"] ?>) : <?= $a["nom_role"] ?></li>
 <?php } ?>
 </ul>
 
